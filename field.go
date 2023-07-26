@@ -31,6 +31,18 @@ func (f *Field) Value() interface{} {
 	return f.value.Interface()
 }
 
+// Elem returns the value that the interface v contains
+// or that the pointer v points to.
+func (f *Field) Elem() interface{} {
+	kind := f.value.Kind()
+	switch kind {
+	case reflect.Ptr, reflect.Interface:
+		return f.value.Elem().Interface()
+	}
+
+	return f.value.Interface()
+}
+
 // IsEmbedded returns true if the given field is an anonymous field (embedded)
 func (f *Field) IsEmbedded() bool {
 	return f.field.Anonymous
@@ -95,8 +107,8 @@ func (f *Field) Zero() error {
 // of a nested struct . A struct tag with the content of "-" ignores the
 // checking of that particular field. Example:
 //
-//   // Field is ignored by this package.
-//   Field *http.Request `structs:"-"`
+//	// Field is ignored by this package.
+//	Field *http.Request `structs:"-"`
 //
 // It panics if field is not exported or if field's kind is not struct
 func (f *Field) Fields() []*Field {

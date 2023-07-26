@@ -1,3 +1,5 @@
+# This is a fork of the archived project [fatih/structs](https://github.com/fatih/structs)
+ Thanks to Fatih Arslan for the original work.
 # Archived project. No maintenance. 
 
 This project is not maintained anymore and is archived. Feel free to fork and
@@ -16,7 +18,7 @@ functions or improve the existing code.
 ## Install
 
 ```bash
-go get github.com/fatih/structs
+go get github.com/laziness-coders/structs
 ```
 
 ## Usage and Examples
